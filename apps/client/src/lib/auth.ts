@@ -1,7 +1,8 @@
 import { createAuthClient } from "better-auth/react";
 export const authClient = createAuthClient({
   baseURL: import.meta.env.VITE_BACKEND_URL,
-  sessionCookieName: "session",
+  // Must match Better Auth server cookie name
+  sessionCookieName: "better-auth.session",
   debug: true,
   fetchOptions: {
     credentials: "include",
