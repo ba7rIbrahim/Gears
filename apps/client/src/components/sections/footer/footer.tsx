@@ -33,7 +33,7 @@ export const Footer = () => {
           <div className="mb-8 rounded-full bg-primary/10 p-4">
             <Logo />
           </div>
-          <nav className="mb-8 flex flex-wrap justify-center gap-6">
+          <nav className="mb-8 flex flex-row-reverse flex-wrap justify-center gap-6">
             {navigationLinks.map((link) => (
               <Link key={link.label} to={link.href}>
                 {link.label}
