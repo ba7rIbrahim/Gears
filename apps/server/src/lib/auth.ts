@@ -20,7 +20,7 @@ export const auth = betterAuth({
     sendVerification: true,
     sendPasswordReset: true,
   },
-  trustedOrigins: ["http://localhost:5173"],
+  trustedOrigins: ["https://geeaers.vercel.app"],
   baseURL: process.env.BACKEND_URL,
   socialProviders: {
     google: {
