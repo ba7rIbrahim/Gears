@@ -19,7 +19,7 @@ app.set("trust proxy", 1);
 app.use(
   cors({
     origin: ["http://localhost:5173", "https://geeaers.vercel.app"],
-    methods: ["GET", "POST", "PUT", "DELETE"],
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
     credentials: true,
   })
 );
