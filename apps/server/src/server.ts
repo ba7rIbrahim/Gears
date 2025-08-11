@@ -24,8 +24,8 @@ app.use(
   })
 );
 
-// Route all Better Auth API requests
-app.all("/api/auth/*", toNodeHandler(auth));
+// Route all Better Auth API requests (Express 5 compatible)
+app.use("/api/auth", toNodeHandler(auth));
 app.use(express.json());
 app.use("/api/products", productRouter);
 app.use("/api/orders", orderRoute);
