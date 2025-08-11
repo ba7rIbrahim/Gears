@@ -93,17 +93,19 @@ const ShopPage = () => {
                 </div>
               )}
 
-              {sortedProducts.length > 0 ? (
+              {!isPending && sortedProducts.length === 0 && (
+                <NotFoundProduct
+                  title="لم يتم العثور على منتجات"
+                  description="جرب تغيير الفلاتر أو البحث عن شيء آخر"
+                />
+              )}
+
+              {sortedProducts.length > 0 && (
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6">
                   {sortedProducts.map((product) => (
                     <ProductCard key={product._id} product={product} />
                   ))}
                 </div>
-              ) : (
-                <NotFoundProduct
-                  title="لم يتم العثور على منتجات"
-                  description="جرب تغيير الفلاتر أو البحث عن شيء آخر"
-                />
               )}
             </div>
           </div>
