@@ -20,12 +20,8 @@ export const auth = betterAuth({
     sendVerification: true,
     sendPasswordReset: true,
   },
-  // Allow both local dev and production frontend origins
-  trustedOrigins: [
-    "http://localhost:5173",
-    "https://geeaers.vercel.app",
-    process.env.FRONTEND_URL as string,
-  ].filter(Boolean) as string[],
+
+  trustedOrigins: ["https://geeaers.vercel.app"],
   baseURL: process.env.BACKEND_URL,
   socialProviders: {
     google: {

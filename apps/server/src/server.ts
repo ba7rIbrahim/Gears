@@ -13,19 +13,17 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT;
 
-// Ensure correct protocol detection behind proxies/CDNs for secure cookies
 app.set("trust proxy", 1);
 
 app.use(
   cors({
-    origin: ["http://localhost:5173", "https://geeaers.vercel.app"],
+    origin: ["https://geeaers.vercel.app"],
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
     credentials: true,
   })
 );
 
-// Route all Better Auth API requests (Express 5 compatible)
-app.use("/api/auth", toNodeHandler(auth));
+app.all("/api/auth/*splat", toNodeHandler(auth));
 app.use(express.json());
 app.use("/api/products", productRouter);
 app.use("/api/orders", orderRoute);
