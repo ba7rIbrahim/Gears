@@ -10,7 +10,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { Logo } from "../../shared/logo";
-import { Link, useNavigate } from "react-router";
+import { Link } from "react-router";
 import { navigationLinks } from "@/constant/nav-links";
 import { useSession } from "@/lib/auth";
 import { Button } from "@/components/ui/button";
@@ -18,19 +18,12 @@ import { Spinner } from "@/components/shared";
 import { UserButton } from "@daveyplate/better-auth-ui";
 import { arabicLocalization } from "@/localization/arabic-localization";
 import { Settings, User } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { ThemeToggle, UserOrdersSidebar } from "./components";
 
 export const Header = () => {
-  const navigate = useNavigate();
   const { data: session, isPending } = useSession();
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
-
-  useEffect(() => {
-    if (session) {
-      navigate("/");
-    }
-  }, [session, navigate]);
 
   return (
     <header className="border-b container">
