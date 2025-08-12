@@ -1,18 +1,17 @@
 import { authClient } from "@/lib/auth";
-// import { router } from "@/routes/route";
 import { AuthUIProvider } from "@daveyplate/better-auth-ui";
 import { useNavigate, NavLink } from "react-router-dom";
 
-// Wrapper component to convert href to to prop
-const LinkWrapper = ({
+const LinkAdapter = ({
   href,
+  className,
   children,
-  ...props
 }: {
   href: string;
+  className?: string;
   children: React.ReactNode;
-} & Omit<React.ComponentPropsWithoutRef<typeof NavLink>, "to">) => (
-  <NavLink to={href} {...props}>
+}) => (
+  <NavLink to={href} className={className}>
     {children}
   </NavLink>
 );
@@ -24,7 +23,7 @@ export function AuthProviders({ children }: { children: React.ReactNode }) {
     <AuthUIProvider
       authClient={authClient}
       navigate={navigate}
-      Link={LinkWrapper}
+      Link={LinkAdapter}
     >
       {children}
     </AuthUIProvider>
