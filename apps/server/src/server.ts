@@ -18,9 +18,9 @@ app.set("trust proxy", 1);
 
 app.use(
   cors({
-    origin: "https://geeaers.vercel.app", 
-    methods: ["GET", "POST", "PUT", "DELETE"], 
-    credentials: true, 
+    origin: "https://geeaers.vercel.app",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
   })
 );
 

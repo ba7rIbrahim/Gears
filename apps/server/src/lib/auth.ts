@@ -2,7 +2,6 @@ import { betterAuth } from "better-auth";
 import { mongodbAdapter } from "better-auth/adapters/mongodb";
 import { MongoClient } from "mongodb";
 import dotenv from "dotenv";
-import { magicLink } from "better-auth/plugins";
 
 dotenv.config();
 
@@ -13,6 +12,7 @@ const db = client.db("test");
 
 export const auth = betterAuth({
   database: mongodbAdapter(db),
+  secret: process.env.BETTER_AUTH_SECRET,
   emailAndPassword: {
     enabled: true,
   },
@@ -21,16 +21,11 @@ export const auth = betterAuth({
     sendPasswordReset: true,
   },
   trustedOrigins: ["https://geeaers.vercel.app"],
-  baseURL: process.env.BACKEND_URL,
+  baseURL: process.env.BETTER_AUTH_URL,
   socialProviders: {
     google: {
       clientId: process.env.GOOGLE_CLIENT_ID!,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
     },
   },
-  plugins: [
-    magicLink({
-      sendMagicLink: async ({ email, token, url }, request) => {},
-    }),
-  ],
 });
