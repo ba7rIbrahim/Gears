@@ -5,8 +5,8 @@ export const ProductCardSkeleton = () => {
     <div className="flex flex-col space-y-3" dir="rtl">
       <Skeleton className="h-[200px] rounded-xl" />
       <div className="space-y-2">
-        <Skeleton className="h-4 w-[240px]" />
-        <Skeleton className="h-4 w-[200px]" />
+        <Skeleton className="w-1/2 h-4" />
+        <Skeleton className="w-1/3 h-4" />
       </div>
     </div>
   );

@@ -33,7 +33,7 @@ export const NewArrivals = () => {
       <div className="relative">
         <div className="ml-7">
           {isPending && (
-            <div className="flex gap-6 mt-12">
+            <div className="flex overflow-x-scroll gap-6 mt-12">
               {Array.from({ length: 10 }).map((_, index) => (
                 <ProductCardSkeleton key={index} />
               ))}
