@@ -7,6 +7,7 @@ import dotenv from "dotenv";
 import morgan from "morgan";
 import productRouter from "./routes/product-route";
 import orderRoute from "./routes/order-route";
+import cookieParser from "cookie-parser";
 
 dotenv.config();
 
@@ -22,6 +23,8 @@ app.use(
     credentials: true, 
   })
 );
+
+app.use(cookieParser());
 
 app.all("/api/auth/*splat", toNodeHandler(auth));
 app.use(express.json());

@@ -20,9 +20,19 @@ export const auth = betterAuth({
     sendVerification: true,
     sendPasswordReset: true,
   },
-
   trustedOrigins: ["https://geeaers.vercel.app"],
   baseURL: process.env.BACKEND_URL,
+  advanced: {
+    useSecureCookies: true,
+    cookies: {
+      sessionStorage: {
+        attributes: {
+          sameSite: "none",
+          secure: true,
+        },
+      },
+    },
+  },
   socialProviders: {
     google: {
       clientId: process.env.GOOGLE_CLIENT_ID!,
