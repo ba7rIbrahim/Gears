@@ -26,7 +26,7 @@ app.use(
 
 app.use(cookieParser());
 
-app.all("/api/auth/*splat", toNodeHandler(auth));
+app.all("/api/auth/{*any}", toNodeHandler(auth));
 app.use(express.json());
 app.use("/api/products", productRouter);
 app.use("/api/orders", orderRoute);
