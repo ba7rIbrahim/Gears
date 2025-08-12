@@ -15,8 +15,7 @@ export const auth = betterAuth({
     defaultCookieAttributes: {
       sameSite: "none",
       secure: true,
-      partitioned: true,
-    }
+    },
   },
   database: mongodbAdapter(db),
   secret: process.env.BETTER_AUTH_SECRET,
