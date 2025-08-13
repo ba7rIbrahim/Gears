@@ -19,6 +19,7 @@ const ContactUs = lazy(() => import("@/pages/contact-us-page"));
 const Checkout = lazy(() => import("@/pages/checkout-page"));
 
 const queryClient = new QueryClient();
+console.log(import.meta.env.MODE);
 
 export default function App() {
   return (

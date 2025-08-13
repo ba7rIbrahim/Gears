@@ -13,8 +13,8 @@ const db = client.db("test");
 export const auth = betterAuth({
   advanced: {
     defaultCookieAttributes: {
-      sameSite: "none",
-      secure: true,
+      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+      secure: process.env.NODE_ENV === "production",
     },
   },
   database: mongodbAdapter(db),
@@ -26,7 +26,7 @@ export const auth = betterAuth({
     sendVerification: true,
     sendPasswordReset: true,
   },
-  trustedOrigins: ["https://geeaers.vercel.app"],
+  trustedOrigins: ["https://geeaers.vercel.app", "http://localhost:3000"],
   baseURL: process.env.BETTER_AUTH_URL,
   socialProviders: {
     google: {
