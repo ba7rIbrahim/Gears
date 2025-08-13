@@ -1,11 +1,9 @@
 import { betterAuth } from "better-auth";
 import { mongodbAdapter } from "better-auth/adapters/mongodb";
 import { MongoClient } from "mongodb";
-import dotenv from "dotenv";
+import { ENV } from "../config/env";
 
-dotenv.config();
-
-const client = new MongoClient(process.env.MONGODB_URI!);
+const client = new MongoClient(ENV.MONGODB_URI);
 await client.connect();
 
 const db = client.db("test");
@@ -13,12 +11,12 @@ const db = client.db("test");
 export const auth = betterAuth({
   advanced: {
     defaultCookieAttributes: {
-      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
-      secure: process.env.NODE_ENV === "production",
+      sameSite: ENV.NODE_ENV === "production" ? "none" : "lax",
+      secure: ENV.NODE_ENV === "production",
     },
   },
   database: mongodbAdapter(db),
-  secret: process.env.BETTER_AUTH_SECRET,
+  secret: ENV.BETTER_AUTH_SECRET,
   emailAndPassword: {
     enabled: true,
   },
@@ -27,11 +25,11 @@ export const auth = betterAuth({
     sendPasswordReset: true,
   },
   trustedOrigins: ["https://geeaers.vercel.app", "http://localhost:3000"],
-  baseURL: process.env.BETTER_AUTH_URL,
+  baseURL: ENV.BETTER_AUTH_URL,
   socialProviders: {
     google: {
-      clientId: process.env.GOOGLE_CLIENT_ID!,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+      clientId: ENV.GOOGLE_CLIENT_ID,
+      clientSecret: ENV.GOOGLE_CLIENT_SECRET,
     },
   },
 });

@@ -1,10 +1,8 @@
 import mongoose from "mongoose";
-import dotenv from "dotenv";
-dotenv.config();
-
+import { ENV } from "./env";
 let isConnected = false;
 
-const MONGO_URI = process.env.MONGODB_URI!;
+const MONGO_URI = ENV.MONGODB_URI;
 
 export const connectDB = async () => {
   if (isConnected) return;

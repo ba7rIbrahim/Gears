@@ -10,10 +10,6 @@ import orderRoute from "./routes/order-route";
 import cookieParser from "cookie-parser";
 import { ENV } from "./config/env";
 
-dotenv.config({
-  path: `.env${process.env.NODE_ENV ? `.${process.env.NODE_ENV}` : ""}`,
-});
-
 const app = express();
 
 app.set("trust proxy", 1);
@@ -25,11 +21,6 @@ app.use(
     credentials: true,
   })
 );
-console.log(ENV.NODE_ENV);
-console.log(ENV.PORT);
-console.log(ENV.BETTER_AUTH_URL);
-console.log(ENV.BETTER_AUTH_SECRET);
-console.log(ENV.BACKEND_URL);
 
 app.use(cookieParser());
 

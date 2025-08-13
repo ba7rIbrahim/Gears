@@ -17,4 +17,6 @@ export const ENV = {
   BETTER_AUTH_SECRET: process.env.BETTER_AUTH_SECRET ?? "",
   GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID ?? "",
   GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET ?? "",
+  ADMIN_EMAIL: process.env.ADMIN_EMAIL ?? "",
+  ADMIN_SECRET: process.env.ADMIN_SECRET ?? "",
 };

@@ -1,9 +1,7 @@
 import type { Request, Response, NextFunction } from "express";
 import { fromNodeHeaders } from "better-auth/node";
 import { auth } from "../lib/auth";
-import dotenv from "dotenv";
-
-dotenv.config();
+import { ENV } from "../config/env";
 
 export interface AuthRequest extends Request {
   auth?: {
@@ -43,10 +41,7 @@ export const authorizeAdmin = (
   const email = req.headers["x-admin-email"];
   const secret = req.headers["x-admin-secret"];
 
-  if (
-    email !== process.env.ADMIN_EMAIL ||
-    secret !== process.env.ADMIN_SECRET
-  ) {
+  if (email !== ENV.ADMIN_EMAIL || secret !== ENV.ADMIN_SECRET) {
     return res.status(403).json({ error: "Forbidden - Invalid credentials" });
   }
   next();
